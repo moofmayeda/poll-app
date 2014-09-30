@@ -1,0 +1,8 @@
+li a {
+    color: green;
+}
+
+body {
+  background: white url("images/Poll_graphic.jpg") no-repeat;
+  background-size: 1000px;
+}
