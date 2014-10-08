@@ -1,3 +1,5 @@
+<h1>My Tasks</h1>
+
 <form action="{% url 'todos:update_completed' %}" method="post">
 {% csrf_token %}
 
@@ -6,7 +8,7 @@
 {% if all_categories %}
   <ul>
     {% for category in all_categories %}
-      <li>{{ category.category_text }}</li>
+      <li>{{ category.category_text }}: {{ category.completed_tasks }} / {{ category.total_tasks }} Complete</li>
       {% if category.task_set.all %}
         <ul>
           {% for task in category.task_set.all %}
@@ -22,6 +24,6 @@
 {% else %}
   <p>No categories</p>
 {% endif %}
-
-<input type="submit" value="Update" />
+<!--
+<input type="submit" value="Update" /> -->
 </form>
