@@ -9,6 +9,14 @@ class Category(models.Model):
       return self.task_set.count()
     total_tasks.admin_order_field = 'total_tasks'
     total_tasks.integer = True
+    def incomplete_tasks(self):
+      return self.task_set.filter(completed=False).count()
+    total_tasks.admin_order_field = 'incomplete_tasks'
+    total_tasks.integer = True
+    def completed_tasks(self):
+      return self.task_set.filter(completed=True).count()
+    total_tasks.admin_order_field = 'completed_tasks'
+    total_tasks.integer = True
 
 class Task(models.Model):
     category = models.ForeignKey(Category)
