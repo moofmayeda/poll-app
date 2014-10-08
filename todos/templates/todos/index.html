@@ -1,3 +1,8 @@
+<form action="{% url 'todos:update_completed' %}" method="post">
+{% csrf_token %}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
 {% if all_categories %}
   <ul>
     {% for category in all_categories %}
@@ -5,7 +10,10 @@
       {% if category.task_set.all %}
         <ul>
           {% for task in category.task_set.all %}
-           <li>{{ task.task_text }}</li>
+            <input type="checkbox" name="task" id="task{{ forloop.counter }}" value="{{ task.id }}" {% if task.completed %}
+                checked
+                {% endif %} />
+            <label for="task{{ forloop.counter }}">{{ task.task_text }}</label><br />
           {% endfor %}
         </ul>
       {% endif %}
@@ -14,3 +22,6 @@
 {% else %}
   <p>No categories</p>
 {% endif %}
+
+<input type="submit" value="Update" />
+</form>
