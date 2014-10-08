@@ -7,6 +7,8 @@ class Category(models.Model):
       return self.category_text
     def total_tasks(self):
       return self.task_set.count()
+    total_tasks.admin_order_field = 'total_tasks'
+    total_tasks.integer = True
 
 class Task(models.Model):
     category = models.ForeignKey(Category)

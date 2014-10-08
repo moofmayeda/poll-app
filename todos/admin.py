@@ -10,6 +10,7 @@ class CategoryAdmin(admin.ModelAdmin):
     (None,               {'fields': ['category_text']}),
   ]
   inlines = [TaskInline]
+  list_display = ('category_text', 'total_tasks')
   search_fields = ['category_text']
 
 admin.site.register(Category, CategoryAdmin)
