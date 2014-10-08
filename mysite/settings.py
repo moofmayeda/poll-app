@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'polls',
+    'todos',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -59,8 +60,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'epicodus',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pollapp',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
