@@ -2,11 +2,13 @@
   <ul>
     {% for category in all_categories %}
       <li>{{ category.category_text }}</li>
-      <ul>
-        {% for task in category.task_set.all %}
-         <li>{{ task.task_text }}</li>
-        {% endfor %}
-      </ul>
+      {% if category.task_set.all %}
+        <ul>
+          {% for task in category.task_set.all %}
+           <li>{{ task.task_text }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
     {% endfor %}
   </ul>
 {% else %}
